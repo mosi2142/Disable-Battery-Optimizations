@@ -198,7 +198,7 @@ public class DialogKillerManagerBuilder {
     private void initView(View view) {
         TextView contentTextView = view.findViewById(R.id.md_content);
         CheckBox doNotShowAgainCheckBox = view.findViewById(R.id.md_promptCheckbox);
-        ImageView helpImageView = view.findViewById(R.id.md_imageView);
+//        ImageView helpImageView = view.findViewById(R.id.md_imageView);
 
         if (contentResMessage != -1) {
             contentTextView.setText(contentResMessage);
@@ -223,23 +223,23 @@ public class DialogKillerManagerBuilder {
         }
 
         //TODO add other specific images
-        int helpImageRes = 0;
-        switch (mAction) {
-            case ACTION_AUTOSTART:
-                helpImageRes = KillerManager.getDevice().getHelpImageAutoStart();
-                break;
-            case ACTION_POWERSAVING:
-                helpImageRes = KillerManager.getDevice().getHelpImagePowerSaving();
-                break;
-            case ACTION_NOTIFICATIONS:
-                helpImageRes = KillerManager.getDevice().getHelpImageNotification();
-                break;
-        }
-
-        if (helpImageRes != 0) {
-            helpImageView.setImageResource(helpImageRes);
-        }else{
-            helpImageView.setVisibility(View.GONE);
-        }
+//        int helpImageRes = 0;
+//        switch (mAction) {
+//            case ACTION_AUTOSTART:
+//                helpImageRes = KillerManager.getDevice().getHelpImageAutoStart();
+//                break;
+//            case ACTION_POWERSAVING:
+//                helpImageRes = KillerManager.getDevice().getHelpImagePowerSaving();
+//                break;
+//            case ACTION_NOTIFICATIONS:
+//                helpImageRes = KillerManager.getDevice().getHelpImageNotification();
+//                break;
+//        }
+//
+//        if (helpImageRes != 0) {
+//            helpImageView.setImageResource(helpImageRes);
+//        }else{
+//            helpImageView.setVisibility(View.GONE);
+//        }
     }
 }
