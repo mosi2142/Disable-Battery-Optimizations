@@ -52,6 +52,8 @@ public class BatteryOptimizationUtil {
             final KillerManager.Actions action,
             @Nullable String titleMessage,
             final String contentMessage,
+            @Nullable  String positiveBtnText,
+            @Nullable  String negativeBtnText,
             @Nullable final OnBatteryOptimizationAccepted positiveCallback,
             @Nullable final OnBatteryOptimizationCanceled negativeCallback) {
 
@@ -60,13 +62,21 @@ public class BatteryOptimizationUtil {
                 titleMessage = String.format("Your Device %s %s has additional battery optimization", Build.MANUFACTURER, Build.MODEL);
             }
 
+            if (positiveBtnText == null) {
+                positiveBtnText = "Ok";
+            }
+
+            if (negativeBtnText == null) {
+                negativeBtnText = "Cancel";
+            }
+
             new DialogKillerManagerBuilder()
                     .setContext(context)
                     .setDontShowAgain(false)
                     .setTitleMessage(titleMessage)
                     .setContentMessage(contentMessage)
-                    .setPositiveMessage("Ok")
-                    //.setNegativeMessage("Will Give Later")
+                    .setPositiveMessage(positiveBtnText)
+                    .setNegativeMessage(negativeBtnText)
                     .setOnPositiveCallback(view -> {
                         if (positiveCallback != null)
                             positiveCallback.onBatteryOptimizationAccepted();

@@ -42,6 +42,8 @@ public class DisableBatteryOptimizationPlugin implements FlutterPlugin, Activity
     private String autoStartMessage;
     private String manBatteryTitle;
     private String manBatteryMessage;
+    private String positiveBtnText;
+    private String negativeBtnText;
 
 
     // This static function is optional and equivalent to onAttachedToEngine. It supports the old
@@ -82,6 +84,8 @@ public class DisableBatteryOptimizationPlugin implements FlutterPlugin, Activity
                     if (arguments != null) {
                         autoStartTitle = String.valueOf(arguments.get(0));
                         autoStartMessage = String.valueOf(arguments.get(1));
+                        positiveBtnText = String.valueOf(arguments.get(2));
+                        negativeBtnText = String.valueOf(arguments.get(3));
                         showAutoStartEnabler(() -> setManAutoStart(true), () -> setManAutoStart(false));
                         result.success(true);
                     } else {
@@ -99,6 +103,8 @@ public class DisableBatteryOptimizationPlugin implements FlutterPlugin, Activity
                     if (arguments != null) {
                         manBatteryTitle = String.valueOf(arguments.get(0));
                         manBatteryMessage = String.valueOf(arguments.get(1));
+                        positiveBtnText = String.valueOf(arguments.get(2));
+                        negativeBtnText = String.valueOf(arguments.get(3));
                         showManBatteryOptimizationDisabler(false);
                         result.success(true);
                     } else {
@@ -127,6 +133,8 @@ public class DisableBatteryOptimizationPlugin implements FlutterPlugin, Activity
                         autoStartMessage = String.valueOf(arguments.get(1));
                         manBatteryTitle = String.valueOf(arguments.get(2));
                         manBatteryMessage = String.valueOf(arguments.get(3));
+                        positiveBtnText = String.valueOf(arguments.get(4));
+                        negativeBtnText = String.valueOf(arguments.get(5));
                         handleIgnoreAllBatteryPermission();
                         result.success(true);
                     } else {
@@ -196,6 +204,8 @@ public class DisableBatteryOptimizationPlugin implements FlutterPlugin, Activity
                 KillerManager.Actions.ACTION_AUTOSTART,
                 autoStartTitle,
                 autoStartMessage,
+                positiveBtnText,
+                negativeBtnText,
                 positiveCallback,
                 negativeCallback
         );
@@ -207,6 +217,8 @@ public class DisableBatteryOptimizationPlugin implements FlutterPlugin, Activity
                 KillerManager.Actions.ACTION_POWERSAVING,
                 manBatteryTitle,
                 manBatteryMessage,
+                positiveBtnText,
+                negativeBtnText,
                 () -> {
                     setManBatteryOptimization(true);
                     if (isRequestNativeBatteryOptimizationDisabler) {

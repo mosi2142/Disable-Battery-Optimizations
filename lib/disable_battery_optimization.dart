@@ -4,12 +4,12 @@ import 'package:flutter/services.dart';
 
 class DisableBatteryOptimization {
   static const MethodChannel _channel =
-      const MethodChannel('in.jvapps.disable_battery_optimization');
+  const MethodChannel('in.jvapps.disable_battery_optimization');
 
   static Future<bool?> showEnableAutoStartSettings(
-      String dialogTitle, String dialogBody) async {
+      String dialogTitle, String dialogBody,String? positiveBtnText,String? negativeBtnText) async {
     return await _channel.invokeMethod(
-        'showEnableAutoStart', <dynamic>[dialogTitle, dialogBody]);
+        'showEnableAutoStart', <dynamic>[dialogTitle, dialogBody,positiveBtnText,negativeBtnText]);
   }
 
   static Future<bool?> showDisableManufacturerBatteryOptimizationSettings(
@@ -26,12 +26,17 @@ class DisableBatteryOptimization {
       String autoStartTitle,
       String autoStartBody,
       String manBatteryTitle,
-      String manBatteryBody) async {
+      String manBatteryBody,
+      String? positiveBtnText,
+      String? negativeBtnText
+      ) async {
     return await _channel.invokeMethod('disableAllOptimizations', <dynamic>[
       autoStartTitle,
       autoStartBody,
       manBatteryTitle,
-      manBatteryBody
+      manBatteryBody,
+      positiveBtnText,
+      negativeBtnText,
     ]);
   }
 
